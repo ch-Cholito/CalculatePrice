@@ -1,0 +1,50 @@
+body {
+    background: #e9f5ff; /* fallback for old browsers */
+    background: rgb(192, 204, 231);
+    background: linear-gradient(90deg, rgb(171, 202, 241) 0%, rgb(214, 226, 248) 50%);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;   
+}
+
+.form {
+  
+    position: relative;
+    z-index: 1;
+    background: #f5f2f2;
+    max-width: 370px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: start;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+   
+  }
+
+  .row {
+
+    background: #f5f2f2;
+    width: 80%;
+    height: 15%;
+    border: 1px solid rgb(196, 196, 196);
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-size: large;
+  }
+
+  h2{
+    color: rgb(71, 89, 124);
+  }
+  #button{
+
+    width: 150px;
+    height: 30px;
+    background-color: #f5f2f2;
+  }
+
+  .button{
+    padding-top: 30px;
+    padding-left: 110px;
+
+  }

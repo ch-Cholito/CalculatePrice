@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="main.js"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form">
+        <div>
+            <h2>1. Выберите марку машины</h2>
+            <select class="brand row">
+                <option value="LADA">Lada</option>
+                <option value="RENO">Reno</option>
+                <option value="OPEL">Opel</option>
+                <option value="BMW">BMW</option>
+            </select>
+        </div>
+        <div>
+            <h2>2. Выберите цвет машины</h2>
+            <select class="color row">
+                <option value="BLACK">Черный</option>
+                <option value="WHITE">Белый</option>
+                <option value="GREEN">Зеленый</option>
+                <option value="BLUE">Синий</option>
+            </select>
+        </div>
+        <div>
+            <h2>3. Выберите год производства</h2>
+            <input type="number" min="2010" max="2020" step="1" class="row year">
+
+        </div>
+        <div class="drive">
+            <h2>4. Выберите тип управления</h2>
+            <div>
+                <input type="radio" class="rb1" id="option1" checked name="radio" value="MANUAL">
+                <label for="option1">Механика</label>
+            </div>
+            <div>
+                <input type="radio" class="rb1" id="option2" name="radio" value="AUTO">
+                <label for="option1">Автомат</label>
+            </div>
+            <div></div>
+        </div>
+        <div>
+            <h2>Выберите комплектацию</h2>
+            <input type="checkbox" class="checkbox" id="leather" value="100000">
+            <label for="leather">Кожаный салон</label><br>
+
+            <input type="checkbox" class="checkbox" id="gold" value="30000">
+            <label for="gold">Золотые ручки</label><br>
+
+            <input type="checkbox" class="checkbox" id="stereo" value="30000">
+            <label for="stereo">Стерео система</label>
+        </div>
+        <div class="button">
+            <input type="button" id="button" value="Рассчитать">
+        </div>
+    </div>
+
+    <script>
+        let arr = [];
+        const brand = document.querySelector('.brand');
+        const color = document.querySelector('.color');
+        const year = document.querySelector('.year');
+        const radio = document.querySelector('.rb1');
+        const leather = document.querySelector('#leather');
+        const gold = document.querySelector('#gold');
+        const stereo = document.querySelector('#stereo');
+        const btn = document.querySelector('.button');
+
+
+        // Selected brand price
+
+        function calculateBrand(brand) {
+            let result
+            switch (brand) {
+                case 'LADA':
+                    result = 600000
+                    break;
+                case 'RENO':
+                    result = 700000
+                    break;
+                case 'BMW':
+                    result = 1000000
+                    break;
+                case 'OPEL':
+                    result = 800000
+                    break;
+            }
+            return result;
+        }
+
+        // Selected color price
+
+        function calculateColor(color) {
+            let result
+            switch (color) {
+                case 'BLACK':
+                    result = 0
+                    break;
+                case 'WHITE':
+                    result = 0
+                    break;
+                case 'GREEN':
+                    result = 1000000
+                    break;
+                case 'BLUE':
+                    result = 800000
+                    break;
+            }
+            return result;
+        }
+
+        // Selected year price
+
+        function calculateYear(year) {
+            return year > 2018 ? 100000 : 0;
+        }
+
+        // Selected dirve type price
+
+        function calculateDriveType(radioValue) {
+            if (radioValue == 'AUTO') {
+                return 50000;
+            } else {
+                return 0;
+            }
+
+        }
+
+
+        // Calculate button
+
+        btn.addEventListener('click', () => {
+            arr[0] = calculateBrand(brand.value);
+            arr[1] = calculateColor(color.value);
+            arr[2] = calculateYear(+year.value);
+            const radioValue = document.querySelector('.rb1:checked').value
+            arr[3] = calculateDriveType(radioValue);
+
+            arr[4] = [].reduce.call(document.querySelectorAll('.checkbox:checked'), (sumAcc, checkbox) => {
+                return sumAcc + +checkbox.value
+            }, 0)
+            const sum = arr.reduce((sumAcc, price) => {
+                return sumAcc + price
+            }, 0);
+            alert(sum);
+        })
+
+    </script>
+</body>
+
+</html>
